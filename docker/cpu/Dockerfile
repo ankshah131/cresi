@@ -61,6 +61,9 @@ RUN chmod +x /usr/bin/tini
 RUN conda update conda && \
     conda config --add channels conda-forge
 
+#install python 3.6
+#RUN conda install python=3.6
+
 # set up conda environment and add to $PATH
 RUN conda create -n cresi python=3.6 \
                     && echo "source activate cresi" > ~/.bashrc
@@ -78,24 +81,30 @@ RUN pip install http://download.pytorch.org/whl/cpu/torch-0.3.0.post4-cp36-cp36m
 && pip install numba \
 && pip install torchsummary \
 && pip install imagecodecs
+
+RUN conda config --set always_yes true
+
+
+RUN conda install -n cresi gdal=2.4.2
+#RUN conda install -n cresi -c conda-forge gdal=2.4.2
 			  
+RUN conda install -n cresi geopandas=0.6.3 
+RUN conda install -n cresi fiona
+RUN conda install -n cresi rasterio
+RUN conda install -n cresi osmnx=0.12		
+RUN conda install -n cresi networkx=2.2		
+RUN conda install -n cresi awscli
+RUN conda install -n cresi affine
+RUN conda install -n cresi affine
+RUN conda install -n cresi pyproj
+RUN conda install -n cresi pyhamcrest
+RUN conda install -n cresi cython
+RUN conda install -n cresi h5py
+RUN conda install -n cresi ncurses
+RUN conda install -n cresi jupyter
+RUN conda install -n cresi jupyterlab		
+
 RUN conda install -n cresi \
-		gdal=2.4.2 \
-		geopandas=0.6.3 \
-		fiona \
-		rasterio \
-		osmnx=0.12 \
-		networkx=2.2 \ 
-		awscli \
-		affine \
-		pyproj \
-		pyhamcrest \
-		cython \
-		fiona \
-		h5py \
-		ncurses \
-		jupyter \
-		jupyterlab \
 		ipykernel \
 		libgdal \
 		matplotlib \
@@ -127,7 +136,7 @@ ENV LD_LIBRARY_PATH /miniconda/lib:${LD_LIBRARY_PATH}
 RUN apt install -y libgl1-mesa-glx
 					 
 # add a jupyter kernel for the conda environment in case it's wanted
-RUN source activate cresi && python -m ipykernel.kernelspec
+#RUN source activate cresi && python -m ipykernel.kernelspec
 
 # # clone cresi
 RUN git clone https://github.com/avanetten/cresi.git /opt/cresi/

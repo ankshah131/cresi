@@ -84,24 +84,57 @@ RUN pip install torch-0.3.0.post4-cp36-cp36m-linux_x86_64.whl \
 	&& pip install utm \
 	&& pip install numba \
 	&& pip install imagecodecs
+RUN conda config --set always_yes true
+
+
+RUN conda install -n cresi gdal=2.4.2
+#RUN conda install -n cresi -c conda-forge gdal=2.4.2
 			  
+RUN conda install -n cresi geopandas=0.6.3 
+RUN conda install -n cresi fiona
+RUN conda install -n cresi rasterio
+RUN conda install -n cresi osmnx=0.12		
+RUN conda install -n cresi networkx=2.2		
+RUN conda install -n cresi awscli
+RUN conda install -n cresi affine
+RUN conda install -n cresi affine
+RUN conda install -n cresi pyproj
+RUN conda install -n cresi pyhamcrest
+RUN conda install -n cresi cython
+RUN conda install -n cresi h5py
+RUN conda install -n cresi ncurses
+RUN conda install -n cresi jupyter
+RUN conda install -n cresi jupyterlab		
+
 RUN conda install -n cresi \
-		gdal=2.4.2 \
-		geopandas=0.6.3 \
-		fiona \
-		rasterio \
-		osmnx=0.12 \
-		networkx=2.2 \ 
-		awscli \
-		affine \
-		pyproj \
-		pyhamcrest \
-		cython \
-		fiona \
-		h5py \
+		ipykernel \
+		libgdal \
+		matplotlib \
 		ncurses \
+		numpy \
+		statsmodels \
+		#opencv \
+		pandas \
+		pillow \
+		pip \
+		scipy \
+		scikit-image \
+		scikit-learn \
+		shapely \
+		rtree \
+		testpath \
+		tqdm \
+		pandas \
+		opencv \
 		jupyter \
 		jupyterlab \
+		ipykernel \
+	&& conda clean -p \
+	&& conda clean -t \
+	&& conda clean --yes --all
+	
+
+RUN conda install -n cresi \
 		ipykernel \
 		libgdal \
 		matplotlib \

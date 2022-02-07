@@ -113,6 +113,8 @@ if __name__ == "__main__":
     # get config
     with open(args.config_path, 'r') as f:
         cfg = json.load(f)
+
+    #import ipdb;ipdb.set_trace()
     config = Config(**cfg)
     config = update_config(config, target_rows=config.eval_rows, target_cols=config.eval_cols)
 
@@ -125,8 +127,10 @@ if __name__ == "__main__":
         os.system(cmd)
         path_images = config.test_sliced_dir
     else:
-        path_images = config.test_data_refined_dir
+        #path_images = config.test_data_refined_dir
+        path_images = r"cresi/configs/test_sliced_dir"
  
+    print(path_images)
     # check image files
     exts = ('*.tif', '*.tiff', '*.jpg', '*.JPEG', '*.JPG', '*.png', ) # the tuple of file types
     files_grabbed = []
@@ -145,8 +149,8 @@ if __name__ == "__main__":
         if config.save_weights_dir.startswith("/"):
             weight_dir = config.save_weights_dir
         else:
-            weight_dir = os.path.join(config.path_results_root, 'weights', config.save_weights_dir)
-            
+            #weight_dir = os.path.join(config.path_results_root, 'weights', config.save_weights_dir)
+            weight_dir = r"results/weights/aws_weights/"
         log_file = os.path.join(config.path_results_root, config.test_results_dir, 'test.log')
         print("log_file:", log_file)
         # make sure output folders exist

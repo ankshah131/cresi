@@ -134,32 +134,6 @@ RUN conda install -n cresi \
 	&& conda clean --yes --all
 	
 
-RUN conda install -n cresi \
-		ipykernel \
-		libgdal \
-		matplotlib \
-		ncurses \
-		numpy \
-		statsmodels \
-		pandas \
-		pillow \
-		pip \
-		scipy \
-		scikit-image \
-		scikit-learn \
-		shapely \
-		rtree \
-		testpath \
-		tqdm \
-		pandas \
-		opencv \
-		jupyter \
-		jupyterlab \
-		ipykernel \
-	&& conda clean -p \
-	&& conda clean -t \
-	&& conda clean --yes --all
-
 RUN conda install geopandas=0.6.3 -c conda-forge
 	
 # update pytorch?
